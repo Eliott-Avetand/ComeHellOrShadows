@@ -27,8 +27,14 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"],
+            "@actions/*": ["./src/actions/*"],
             "@assets/*": ["./src/assets/*"],
-            "@test/*": ["./src/test/*"],
+            "@config/*": ["./src/config/*"],
+            "@contexts/*": ["./src/contexts/*"],
+            "@reducers/*": ["./src/reducers/*"],
+            "@services/*": ["./src/services/*"],
+            "@styles/*": ["./src/styles/*"],
+            "@views/*": ["./src/views/*"],
         }
     },
     "include": ["src"]

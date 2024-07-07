@@ -1,0 +1,73 @@
+@use "../../../styles/abstracts" as *;
+
+.page {
+    height: 100vh;
+    background: url("../../../assets/Img/registerWallpaper.png") center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .box {
+        padding: 30px 50px;
+        margin-right: 200px;
+        border-radius: 5px;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 600px;
+        @include themed {
+            background: t("dark");
+        }
+        h1 {
+            font-size: var(--step-2);
+            text-align: center;
+            @include themed {
+                color: t("text");
+            }
+        }
+        p {
+            margin: 20px 0;
+            font-size: var(--step--1);
+            text-align: center;
+            a {
+                margin-left: 10px;
+                font-size: var(--step--1);
+                &:hover {
+                    text-decoration: underline;
+                }
+                @include themed {
+                    color: t("primary");
+                }
+            }
+            @include themed {
+                color: t("text");
+            }
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            img {
+                margin: 0 20px;
+            }
+        }
+    }
+}
+
+.form {
+    margin-top: 75px;
+    .submit {
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border-radius: 5px;
+        padding: 10px 0;
+        font-weight: 300;
+        border: none;
+        @include themed {
+            background: t("primary");
+            color: t("text");
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@use "@styles/abstracts" as *;
+
+.root {
+    width: 100%;
+    height: 100%;
+    @include themed {
+        background: t("dark");
+    }
+}

@@ -1,0 +1,56 @@
+@forward 'abstracts';
+@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    font-weight: 400;
+    font-size: 16px;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Step -2: 6.7534px → 11.976px */
+    /* Step -1: 9.0023px → 15.964px */
+    /* Step 0: 12px → 21.28px */
+    /* Step 1: 15.996px → 28.3662px */
+    /* Step 2: 21.3227px → 37.8122px */
+    /* Step 3: 28.4231px → 50.4037px */
+    /* Step 4: 37.888px → 67.1881px */
+    /* Step 5: 50.5047px → 89.5617px */
+    /* Step 6: 67.3228px → 119.3858px */
+
+    @include utopia.generateTypeScale((
+      "minWidth": 320,
+      "maxWidth": 1980,
+      "minFontSize": 12,
+      "maxFontSize": 21.28,
+      "minTypeScale": 1.333,
+      "maxTypeScale": 1.333,
+      "positiveSteps": 6,
+      "negativeSteps": 2,
+      "prefix": "step-",
+    ));
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Montserrat, Helvetica, Roboto, Arial, sans-serif;
+    font-size: var(--step-0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}

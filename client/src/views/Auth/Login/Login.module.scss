@@ -1,0 +1,180 @@
+@use "@styles/abstracts" as *;
+
+.page {
+    padding: 5vw;
+    height: 100vh;
+    background: url("@assets/Img/Wallpaper/loginBackground.png") center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @media screen and (max-width: 1200px) {
+        justify-content: center;
+    }
+    .character {
+        position: absolute;
+        pointer-events: none;
+        bottom: 0;
+        z-index: 11;
+        width: 100vw;
+        animation: appear 1s ease-out 0s 1 forwards paused;
+        @media screen and (max-width: 1200px) {
+            display: none;
+        }
+    }
+    .box {
+        padding: 30px min(5vw, 50px);
+        margin-top: 50px;
+        width: 500px;
+        margin-left: 200px;
+        @media screen and (max-width: 1200px) {
+            margin-left: 0;
+        }
+        @include themed {
+            background: t("dark");
+        }
+        h1 {
+            position: relative;
+            z-index: 2;
+            font-size: var(--step-2);
+            text-align: center;
+            margin-bottom: 6vw;
+            @include themed {
+                color: t("text");
+            }
+        }
+        p {
+            margin: 40px 0;
+            font-size: var(--step--2);
+            text-align: center;
+            a {
+                margin-left: 10px;
+                font-size: var(--step--2);
+                &:hover {
+                    text-decoration: underline;
+                }
+                @include themed {
+                    color: t("primary");
+                }
+            }
+            @include themed {
+                color: t("text");
+            }
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            img {
+                margin: 0 20px;
+            }
+        }
+    }
+}
+
+.form {
+    .inputData {
+        border-bottom: 2px solid #373737;
+        padding: 5px 10px;
+        position: relative;
+        display: flex;
+        &:first-of-type {
+            margin-bottom: 30px;
+        }
+        input {
+            width: 100%;
+            outline: none;
+            border: none;
+            background: none;
+            font-size: var(--step-0);
+            @include themed {
+                color: t("text");
+            }
+        }
+        p {
+            user-select: none;
+            position: absolute;
+            margin: 0;
+            bottom: 5px;
+            left: 10px;
+            opacity: .5;
+            pointer-events: none;
+            font-size: var(--step--1);
+            transition: all .4s;
+            @include themed {
+                color: t("text");
+            }
+        }
+        input:focus ~ p,
+        input:not(:placeholder-shown) ~ p {
+            font-size: var(--step--2);
+            opacity: .75;
+            transform: translateY(-25px);
+        }
+        svg {
+            &.password {
+                cursor: pointer;
+            }
+            margin-left: 10px;
+            @include themed {
+                color: t("text");
+            }
+        }
+    }
+    .passwordSettings {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        label {
+            display: flex;
+            align-items: center;
+            font-size: var(--step--2);
+            @include themed {
+                color: t("text");
+            }
+            input {
+                margin-right: 5px;
+                width: 15px;
+                height: 15px;
+                background: none;
+                background-color: transparent;
+                outline: none;
+                @include themed {
+                    border: 1px solid t("text");
+                }
+            }
+        }
+        a {
+            font-size: var(--step--2);
+            @include themed {
+                color: t("text");
+            }
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .submit {
+        margin-top: 30px;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        border-radius: 5px;
+        padding: 10px 0;
+        font-weight: 300;
+        border: none;
+        @include themed {
+            background: t("primary");
+            color: t("text");
+        }
+    }
+}
+
+@keyframes appear {
+    0% {
+        right: 100%;
+    }
+    100% {
+        right: 0;
+    }
+}

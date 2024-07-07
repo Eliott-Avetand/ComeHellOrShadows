@@ -1,0 +1,115 @@
+@use "../../styles/abstracts" as *;
+
+.component {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 10;
+    @include themed {
+        background: rgba(23, 23, 23, .8);
+    }
+    img {
+        height: 40px;
+        user-select: none;
+        -webkit-user-drag: none;
+        -moz-drag-over: none;
+    }
+    nav {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 800px) {
+            display: none;
+        }
+        .link {
+            display: flex;
+            align-items: center;
+            a {
+                position: relative;
+                line-height: 1.5;
+                margin: 0 20px;
+                font-size: var(--step--1);
+                font-weight: 300;
+                text-transform: uppercase;
+                @include themed {
+                    color: t("text");
+                }
+                &:hover {
+                    &::after {
+                        width: 100%;
+                        left: 0;
+                    }
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    transition: all .4s;
+                    bottom: 0;
+                    right: 0;
+                    height: 2px;
+                    width: 0%;
+                    @include themed {
+                        background: t("primary");
+                    }
+                }
+                &.active {
+                    @include themed {
+                        color: t("primary");
+                    }
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .profile {
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .connexion {
+        display: flex;
+        align-items: center;
+        svg {
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            @include themed {
+                color: t("text");
+                border: 1px solid t("text");
+            }
+        }
+        a {
+            text-align: center;
+            &:first-of-type {
+                margin: 0 20px;
+                &.active {
+                    @include themed {
+                        color: t("primary");
+                    }
+                }
+            }
+            &:last-of-type {
+                padding: 10px 15px;
+                @include themed {
+                    border: 1px solid t("text");
+                }
+                transition: all .4s;
+                &:hover, &.active {
+                    @include themed {
+                        background: t("text");
+                        color: t("dark");
+                    }
+                }
+            }
+            font-weight: 300;
+            @include themed {
+                color: t("text");
+            }
+        }
+    }
+}

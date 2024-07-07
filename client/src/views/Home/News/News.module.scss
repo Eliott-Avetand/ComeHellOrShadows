@@ -1,0 +1,28 @@
+@use "@styles/abstracts" as *;
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .article {
+        margin-bottom: 40px;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        i {
+            margin: 10px 0;
+            opacity: .8;
+            font-size: var(--step--1);
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h5 {
+                margin: 0;
+                font-size: var(--step-0);
+                font-weight: 400;
+            }
+        }
+    }
+}
