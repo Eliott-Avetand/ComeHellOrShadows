@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Bookmarks, ChevronLeft, ChevronRight, Favorite, FiberManualRecord, Visibility } from "@mui/icons-material";
 
+import styles from './Carousel.module.scss';
+
 // ! ASSETS TO REMOVE BECAUSE THEY WILL BE RECEIVED FROM THE BACK
 import Volume4 from '@assets/Img/DEV_ASSETS/Volume4.jpg';
 import Volume3 from '@assets/Img/DEV_ASSETS/Volume3.jpg';
 import Volume2 from '@assets/Img/DEV_ASSETS/Volume2.jpg';
 import Volume1 from '@assets/Img/DEV_ASSETS/Volume1.jpg';
-
-import styles from './Carousel.module.scss';
 
 interface nextArrowFunctionProps {
     className?: string,

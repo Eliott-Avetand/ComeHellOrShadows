@@ -4,9 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 
 import Logo from "@assets/Img/Icons/Logo.png";
 import { useAppSelector } from "@config/useAppDispatch";
-import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
 
 import styles from './Navbar.module.scss';
+
+// ! ASSETS TO REMOVE BECAUSE THEY WILL BE RECEIVED FROM THE BACK
+import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
+
 
 const Navbar = () => {
     const [isMusic, setIsMusic] = useState<boolean>(true);

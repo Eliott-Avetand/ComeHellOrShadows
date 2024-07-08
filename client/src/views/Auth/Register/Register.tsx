@@ -18,8 +18,8 @@ const Register = () => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState<formData>({
-        email: "",
-        password: ""
+        email: "aze@gmail.com",
+        password: "AZEaze1@"
     });
 
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {

@@ -2,9 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 import { MouseEvent, useEffect, useRef } from "react";
 
 import { useAppSelector } from "@config/useAppDispatch";
-import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
 
 import styles from './Sidebar.module.scss';
+
+// ! ASSETS TO REMOVE BECAUSE THEY WILL BE RECEIVED FROM THE BACK
+import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
 
 const Sidebar = () => {
     const user = useAppSelector(state => state.userReducer);
