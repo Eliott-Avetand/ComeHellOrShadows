@@ -48,27 +48,20 @@ export const usersSlice = createSlice({
         // Register user
         builder.addCase(register.fulfilled, (state, { payload }) => {
             state.isAuthenticated = true,
-            state.error = {},
             state.profile = payload
         })
         builder.addCase(register.rejected, (state, action) => {
-            if (action.payload) {
-                state.error = action.payload.message
-            } else {
-                state.error = action.error
-            }
+            if (action.payload)
+                state.error = action.payload
         })
         // Logout user
         builder.addCase(logout.fulfilled, (state) => {
             state.isAuthenticated = false,
-            state.error = {}
+            state.profile = defaultUser
         })
         builder.addCase(logout.rejected, (state, action) => {
-            if (action.payload) {
-                state.error = action.payload.message
-            } else {
-                state.error = action.error
-            }
+            if (action.payload)
+                state.error = action.payload
         })
     },
 })

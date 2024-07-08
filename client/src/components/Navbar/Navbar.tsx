@@ -1,13 +1,15 @@
-import Logo from "../../assets/Img/Logo.png";
-import styles from './Navbar.module.scss';
+import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MusicNote, MusicOff } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeadphonesSimple } from "@fortawesome/free-solid-svg-icons";
-import { MouseEvent, useEffect, useRef } from "react";
-import { useAppSelector } from "../../config/useAppDispatch";
-import profileTemplate from "../../assets/Img/profileTemplate.png";
+
+import Logo from "@assets/Img/Icons/Logo.png";
+import { useAppSelector } from "@config/useAppDispatch";
+import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
+
+import styles from './Navbar.module.scss';
 
 const Navbar = () => {
+    const [isMusic, setIsMusic] = useState<boolean>(true);
     const user = useAppSelector(state => state.userReducer);
     const location = useLocation();
     const navRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,10 @@ const Navbar = () => {
         if (currentActive)
             currentActive.classList.remove(styles.active);
         nextActive.classList.add(styles.active);
+    }
+
+    const handleMusic = () => {
+        setIsMusic(!isMusic);
     }
 
     useEffect(() => {
@@ -51,7 +57,7 @@ const Navbar = () => {
                 { user.isAuthenticated
                 ? <img className={styles.profile} src={profileTemplate} alt={user.profile.username} height={50} />
                 : <div className={styles.connexion}>
-                    <FontAwesomeIcon icon={faHeadphonesSimple} />
+                    <span onClick={handleMusic}>{isMusic ? <MusicNote /> : <MusicOff />}</span>
                     <Link to='/login' onClick={handleActive}>Login</Link>
                     <Link to='/register' onClick={handleActive}>Join Keyos!</Link>
                 </div> }

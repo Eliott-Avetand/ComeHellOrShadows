@@ -1,8 +1,10 @@
-import styles from './Sidebar.module.scss';
 import { Link, useLocation } from "react-router-dom";
 import { MouseEvent, useEffect, useRef } from "react";
-import { useAppSelector } from "../../config/useAppDispatch";
-import profileTemplate from "../../assets/Img/profileTemplate.png";
+
+import { useAppSelector } from "@config/useAppDispatch";
+import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
+
+import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
     const user = useAppSelector(state => state.userReducer);
@@ -45,7 +47,6 @@ const Sidebar = () => {
             });
             content.classList.remove(styles.opened);
             burger.classList.remove(styles.opened);
-            console.log(burger.classList);
         }
     }, [location])
 
