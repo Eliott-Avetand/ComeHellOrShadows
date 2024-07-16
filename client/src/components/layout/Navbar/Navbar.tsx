@@ -10,7 +10,6 @@ import styles from './Navbar.module.scss';
 // ! ASSETS TO REMOVE BECAUSE THEY WILL BE RECEIVED FROM THE BACK
 import profileTemplate from "@assets/Img/DEV_ASSETS/profileTemplate.png";
 
-
 const Navbar = () => {
     const [isMusic, setIsMusic] = useState<boolean>(true);
     const user = useAppSelector(state => state.userReducer);

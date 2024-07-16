@@ -1,0 +1,21 @@
+@use "@styles/abstracts" as *;
+
+.button {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: var(--step--1);
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    @include themed {
+        color: t("text");
+    }
+    &.rounded {
+        border-radius: 20px;
+        @include themed {
+            border: 1px solid t("text");
+        }
+    }
+}

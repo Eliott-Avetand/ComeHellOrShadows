@@ -7,8 +7,8 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const CustomRoutes: CustomRoutesObject[] = [
-    { path: "/auth/register", Component: <Register /> },
-    { path: "/auth/login", Component: <Login /> },
+    { path: "/register", Component: <Register /> },
+    { path: "/login", Component: <Login /> },
     { path: "/", Component: <Home /> },
     { path: "/admin", Component: <AdminRoute></AdminRoute> },
     { path: "/private", Component: <PrivateRoute></PrivateRoute> }

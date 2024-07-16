@@ -1,8 +1,8 @@
-@use "../../../styles/abstracts" as *;
+@use "@styles/abstracts" as *;
 
 .page {
     height: 100vh;
-    background: url("../../../assets/Img/registerWallpaper.png") center no-repeat;
+    background: url("@assets/Img/Wallpapers/RegisterWallpaper.jpg") center no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;

@@ -1,0 +1,14 @@
+@use "@styles/abstracts" as *;
+
+.formButton {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: var(--step--1);
+    width: 100%;
+    cursor: pointer;
+    @include themed {
+        background: t("primary");
+        color: t("text");
+    }
+}

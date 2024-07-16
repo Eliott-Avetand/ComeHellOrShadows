@@ -1,34 +1,33 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Email, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Email } from "@mui/icons-material";
 
+import VideoPath from "@assets/Video/LoginIntro.mp4";
 import { useAppDispatch } from "@config/useAppDispatch.ts";
+import InputPasswordField from "@/components/common/Inputs/PasswordField/InputPasswordField";
+import InputField from "@/components/common/Inputs/InputField";
 import { login } from "@actions/users.actions.ts";
-import Character from "@assets/Img/Characters/Aurore.png";
 import Facebook from "@assets/Img/Icons/Facebook.png";
 import Google from "@assets/Img/Icons/Google.png";
 import X from "@assets/Img/Icons/X.png";
+import useForm from "@/hooks/useForm";
+import VideoComponent from "@/components/page/VideoComponent/VideoComponent";
+import FormButton from "@/components/common/Buttons/FormButton/FormButton";
 
 import styles from "./Login.module.scss";
 
 const Login = () => {
+    const [isVideoEnded, setIsVideoEnded] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-
-    const [showPassword, setShowPassword] = useState<boolean>(false);
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const { values, handleChange } = useForm({ email: "", password: "" });
+    const firstVisitLogin = localStorage.getItem("firstVisitLogin");
 
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const data = {
-            email: email,
-            password: password
-        }
-
-        const result = await dispatch(login(data));
+        const result = await dispatch(login(values));
 
         if (login.fulfilled.match(result)) {
             toast.success("Welcome back " + result.payload.username);
@@ -41,48 +40,35 @@ const Login = () => {
         }
     }
 
-    const handleShowPassword = () => {
-        setShowPassword(!showPassword);        
-    }
-
-    const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    }
-
-    const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    }
-
-    useEffect(() => {
-        const character = document.querySelector(`.${styles.character}`) as HTMLImageElement;
-
-        if (character)
-            character.style.animationPlayState = "running";
-    }, [])
-    
-
     return (
         <div className={styles.page}>
+            {
+                !isVideoEnded && !firstVisitLogin
+                ? <VideoComponent
+                    onVideoEnd={() => setIsVideoEnded(true)}
+                    videoPath={VideoPath}
+                    storageName="firstVisitLogin"
+                />
+                : <></>
+            }
             <div className={styles.box}>
                 <h1>Login</h1>
                 <form className={styles.form} onSubmit={handleLogin}>
-                    <div className={styles.inputData}>
-                        <input type="email" name="emailTest" autoComplete="off" autoFocus required placeholder="" onChange={handleEmail} />
-                        <p>Email</p>
-                        <Email />
-                    </div>
-                    <div className={styles.inputData}>
-                        <input type={showPassword ? "text" : "password"} name="password" required placeholder="" onChange={handlePassword} />
-                        <p>Password</p>
-                        <span onClick={handleShowPassword}>
-                            { showPassword ? <VisibilityOff /> : <Visibility /> }
-                        </span>
-                    </div>
-                    <div className={styles.passwordSettings}>
-                        <label><input type="checkbox" name="remember" /> Remember me?</label>
-                        <Link to="/forgot-password">Forgot Password?</Link>
-                    </div>
-                    <input className={styles.submit} type="submit" value="Login" name="submit" />
+                    <InputField
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        icon={<Email />}
+                    />
+                    <InputPasswordField
+                        label="Password"
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
+                    />
+                    <FormButton value="Create account" />
                 </form>
                 <p>Or Continue with Social Accounts</p>
                 <div className={styles.socials}>
@@ -92,7 +78,6 @@ const Login = () => {
                 </div>
                 <p>Not yet registered?<Link to="/register">Create your account here</Link></p>
             </div>
-            <img className={styles.character} src={Character} alt="Aurore" />
         </div>
     )
 }

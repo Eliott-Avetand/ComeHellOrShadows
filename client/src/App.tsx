@@ -2,9 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import '@styles/styles.scss';
-import Navbar from '@components/Navbar/Navbar';
-import Sidebar from '@components/Sidebar/Sidebar';
-import Footer from '@components/Footer/Footer';
+import Navbar from '@/components/layout/Navbar/Navbar';
+import Sidebar from '@/components/layout/Sidebar/Sidebar';
+import Footer from '@/components/layout/Footer/Footer';
 
 import styles from './App.module.scss';
 import { CustomRoutes } from './routes/Routes';
